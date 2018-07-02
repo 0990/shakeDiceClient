@@ -53,14 +53,17 @@ var NetCtrl = {
         //let msg = JSON.parse(obj.data);
         this.fire('websocket_message',obj.data);
     },
-    send(msg){
-       let obj = {};
-       obj.mainID = parseInt(msg);
-       obj.subID = 1;
-       obj.roomID = 1;
+    send(obj){
        let str = JSON.stringify(obj)
-       cc.log(str)
        this._socket.send(str);
+    },
+    sendMsg(mainID,subID,obj){
+        if (typeof(obj) === 'undefined'){
+            obj = {};
+        }
+        obj.mainID = mainID
+        obj.subID = subID
+        this.send(obj)
     },
     isOpen(){
         return (this._socket&&this._socket.readyState===WebSocket.OPEN);
