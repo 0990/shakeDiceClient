@@ -21,6 +21,9 @@ cc.Class({
         gameLayer:cc.Node,
         plazaLayer:cc.Node,
         userLayer:[cc.Node],
+        readyBtn:cc.Node,
+        openBtn:cc.Node,
+        callBtn:cc.Node,
 
         // foo: {
         //     // ATTRIBUTES:
@@ -124,18 +127,26 @@ cc.Class({
     },
     onGameMsg(msg){
         switch(msg.subID){
-            case SSyncUser:
+            case Cmd.SSyncUser:
             if (msg.userID===G.userInfo.userID){
                 G.userInfo.seat = msg.seat
+                if (msg.ready===false){
+                    this.readyBtn.active = true
+                }
             }
-            this.setUserInfo(msg)
-            //update view
+            this.setUserInfo(msg);
             break;
             case Cmd.SReady:
+            if (msg.userID===G.userInfo.userID){
+                this.readyBtn.active = false
+            }
+            this.userLayerJS[viewID].setUserReady(this.getViewID(msg.seat))
             break;
             case Cmd.SGameStart:
             break;
             case Cmd.SCallRoll:
+            break;
+            case Cmd.SOpen:
             break;
             case Cmd.SGameEnd:
             break;

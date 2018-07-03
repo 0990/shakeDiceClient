@@ -17,12 +17,14 @@ var Cmd = {
     CClientReady:0,
     CReady:1,
     CCallRoll:2,
+    COpen:3,
 
     SSyncUser:100,
     SReady:101,
     SGameStart:102,
     SCallRoll:103,
-    SGameEnd:104
+    SOpen:104,
+    SGameEnd:105
 }
 
 module.exports = Cmd;

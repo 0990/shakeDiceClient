@@ -55,6 +55,7 @@ var NetCtrl = {
     },
     send(obj){
        let str = JSON.stringify(obj)
+       cc.log(str)
        this._socket.send(str);
     },
     sendMsg(mainID,subID,obj){

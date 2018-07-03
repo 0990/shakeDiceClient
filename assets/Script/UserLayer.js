@@ -13,6 +13,7 @@ cc.Class({
 
     properties: {
         userInfoLabel:cc.Label,
+        readyLabel:cc.Label,
         // foo: {
         //     // ATTRIBUTES:
         //     default: null,        // The default value will be used only when the component attaching
@@ -39,6 +40,17 @@ cc.Class({
     },
     setUserInfo(msg){
         this.userInfoLabel.string = msg.userID+":"+msg.nickname;
+        if (msg.ready){
+            this.setUserReady()
+        }else{
+            this.setUserUnReady()
+        }
+    },
+    setUserReady(){
+        this.readyLabel.string = "已准备"
+    },
+    setUserUnReady(){
+        this.readyLabel.string = "未准备"
     }
 
     // update (dt) {},

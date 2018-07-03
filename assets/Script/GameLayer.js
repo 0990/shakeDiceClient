@@ -35,7 +35,7 @@ cc.Class({
     // onLoad () {},
 
     start () {
-        NetCtrl.send(Cmd.MainID_Game,Cmd.CClientReady)
+        NetCtrl.sendMsg(Cmd.MainID_Game,Cmd.CClientReady)
     },
 
     // update (dt) {},
