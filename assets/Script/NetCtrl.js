@@ -49,14 +49,15 @@ var NetCtrl = {
         this.fire("websocket_close",null);
     },
     _onMessage(obj){
-        cc.log(obj);
-        //let msg = JSON.parse(obj.data);
         this.fire('websocket_message',obj.data);
     },
     send(obj){
        let str = JSON.stringify(obj)
-       cc.log(str)
-       this._socket.send(str);
+       if (this.isOpen()){
+        cc.log("CLIENT:"+str)
+        this._socket.send(str);
+       }
+       
     },
     sendMsg(mainID,subID,obj){
         if (typeof(obj) === 'undefined'){

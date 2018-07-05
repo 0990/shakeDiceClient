@@ -10,9 +10,12 @@ var Cmd = {
     //server subID
      CCreateRoom:0,
      CEnterRoom:1,
+     CGetMyRoom:2,
+     
 
      SCreateRoom:100,
      SEnterRoom:101,
+     SSyncMyRoom:102,
     //game subID
     CClientReady:0,
     CReady:1,
